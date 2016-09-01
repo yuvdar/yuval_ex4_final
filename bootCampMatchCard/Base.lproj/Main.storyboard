@@ -641,7 +641,7 @@ Pick a Card!</string>
                     <navigationItem key="navigationItem" title="Match Cards" id="xpe-l6-6Pj">
                         <barButtonItem key="rightBarButtonItem" title="history" id="oEk-2c-O5i">
                             <connections>
-                                <segue destination="58g-go-dBN" kind="push" identifier="cardHistory" id="vDr-0Q-zYD"/>
+                                <segue destination="58g-go-dBN" kind="show" identifier="cardHistory" id="vDr-0Q-zYD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1005,7 +1005,7 @@ Pick a Card!</string>
                     <navigationItem key="navigationItem" title="Play Sets" id="zYG-yh-FXc">
                         <barButtonItem key="rightBarButtonItem" title="history" id="CaB-qk-2fL">
                             <connections>
-                                <segue destination="58g-go-dBN" kind="push" identifier="setHistory" id="RkH-0j-oMC"/>
+                                <segue destination="58g-go-dBN" kind="show" identifier="setHistory" id="RkH-0j-oMC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

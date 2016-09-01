@@ -18,7 +18,7 @@
 
 
 
--(Deck *)createDeck
+- (Deck *)createDeck
 {
 //  return [[PlayingCardDeck alloc] init];
 
@@ -26,12 +26,12 @@
 }
 
 
--(NSArray *)cardButtons
+- (NSArray *)cardButtons
 {
   return self.SetGameButtin;
 }
 
--(void)loadDefualtView
+- (void)loadDefualtView
 {
   if (!(self.gameStarted)){
     [self startGame];
@@ -42,13 +42,13 @@
   self.keepButtonEnanled = YES;
 }
 
--(int)setNumberOfCardToMatch
+- (int)setNumberOfCardToMatch
 {
   return 3;
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if ([segue.identifier isEqualToString:@"setHistory"]){
     if([segue.destinationViewController isKindOfClass:[cardHistoryViewController class]]){
@@ -58,7 +58,7 @@
   }
 }
 
-+(id)cardTitle:(Card *)card
++ (id)cardTitle:(Card *)card
 {
   if (!([card isKindOfClass:[SetCard class]])){
     return nil;
@@ -82,7 +82,7 @@
 }
 
 
--(NSMutableAttributedString *)stringForChosenCards:(NSArray *)chosenCards
+- (NSMutableAttributedString *)stringForChosenCards:(NSArray *)chosenCards
 {
   NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@""];
   for (Card *cCard in chosenCards){
@@ -101,13 +101,14 @@
   return  [SetCardGameViewController cardTitle:card];
 }
 
--(UIImage *)backgroundImageForCard:(Card *)card
+-(UIImage *)backgroundImageForCard:(Card *)card withCardButton:(UIButton *)cardButton
 {
-  return [UIImage imageNamed:@"cardFront"];
+  card.isChosen ? [cardButton setAlpha:0.5] : [cardButton setAlpha:1.0];
+  return card.isChosen ? [UIImage imageNamed:@"cardFront"] : [UIImage imageNamed:@"cardFront"];
 }
 
 
--(BOOL)checkCardSet:(NSArray *)cardSets equalTo:(NSArray *)currentCards
+- (BOOL)checkCardSet:(NSArray *)cardSets equalTo:(NSArray *)currentCards
 {
   int numOfMatches = 0;
   NSMutableArray *first = [cardSets mutableCopy];
@@ -127,7 +128,7 @@
   return numOfMatches == 3;
 }
 
--(NSAttributedString *)checkIfLegal:(Card *)card whenChosenCardsAre:(NSArray *)chosenCards
+- (NSAttributedString *)checkIfLegal:(Card *)card whenChosenCardsAre:(NSArray *)chosenCards
 {
   if ([chosenCards count] != 2){
     return nil;

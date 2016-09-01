@@ -25,7 +25,7 @@
 -(void)localReset; //abstract
 -(void)localStart; //abstract
 -(id)titleForCard:(Card *)card; //abstract
--(UIImage *)backgroundImageForCard:(Card *)card; // abstract
+-(UIImage *)backgroundImageForCard:(Card *)card withCardButton:(UIButton *)cardButton; // abstract
 -(void)loadDefualtView; // abstract
 -(NSMutableAttributedString *)stringForChosenCards:(NSArray *)chosenCards;
 -(NSAttributedString *)checkIfLegal:(Card *)card whenChosenCardsAre:chosenCards;

@@ -171,6 +171,7 @@
     Card *card = [self.game cardAtIndex:cardIndex];
     if (resetChosen) {
       card.chosen = NO;
+      [cardButton setBackgroundImage:[self backgroundImageForCard:card withCardButton:cardButton] forState:UIControlStateNormal];
       card.matched = NO;
     }
     if (card.isChosen && cardButton.enabled) [self.chosenCards addObject:card];
@@ -221,12 +222,12 @@
     } else {
       [cardButton setTitle:@"" forState:UIControlStateNormal];
     }
-    [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
+    [cardButton setBackgroundImage:[self backgroundImageForCard:card withCardButton:cardButton] forState:UIControlStateNormal];
     if (!self.keepButtonEnanled) cardButton.enabled = !card.isMatched;
   }
-  
   int scoreChange = (int)self.game.score - self.lastScore;
   self.lastScore = (int)self.game.score;
+  
   
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", (int)self.game.score];
   
@@ -273,7 +274,7 @@
 
 
 
--(UIImage *)backgroundImageForCard:(Card *)card
+-(UIImage *)backgroundImageForCard:(Card *)card withCardButton:(UIButton *)cardButton;
 {
   return [UIImage imageNamed:@"cardFront"];
 }
@@ -294,6 +295,7 @@
   self.scoreHistoty = nil;
   self.cardHistoryLog = nil;
   self.gameStarted = NO;
+  self.lastScore = 0;
   [self updateText:[NSString stringWithFormat:@"selcet %d cards",
                     [self setNumberOfCardToMatch] ]];
   // local reset

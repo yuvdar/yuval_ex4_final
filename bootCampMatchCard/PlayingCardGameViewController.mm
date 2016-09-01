@@ -41,6 +41,7 @@
     [cardButton setBackgroundImage:[UIImage imageNamed:@"cardBack"]  forState:UIControlStateNormal];
     cardButton.enabled = YES;
     }
+    [self updateUI];
 }
 
 -(NSArray *)cardButtons
@@ -66,7 +67,7 @@
   return card.isChosen ? card.contents : @"";
 }
 
--(UIImage *)backgroundImageForCard:(Card *)card
+-(UIImage *)backgroundImageForCard:(Card *)card withCardButton:(UIButton *)cardButton
 {
   return [UIImage imageNamed:card.isChosen ? @"cardFront" : @"cardBack"];
 }
