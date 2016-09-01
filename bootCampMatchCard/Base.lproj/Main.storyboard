@@ -685,7 +685,7 @@ Pick a Card!</string>
             </objects>
             <point key="canvasLocation" x="2503.5" y="-396"/>
         </scene>
-        <!--Card History View Controller-->
+        <!--History Log-->
         <scene sceneID="wvA-aw-g1W">
             <objects>
                 <viewController id="58g-go-dBN" customClass="cardHistoryViewController" sceneMemberID="viewController">
@@ -719,7 +719,7 @@ Pick a Card!</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="F3O-jc-x9k"/>
+                    <navigationItem key="navigationItem" title="History Log" id="F3O-jc-x9k"/>
                     <connections>
                         <outlet property="historyUItext" destination="mls-aq-dwT" id="ae3-Uy-pZ3"/>
                     </connections>
