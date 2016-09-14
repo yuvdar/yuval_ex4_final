@@ -8,8 +8,9 @@
 #import "PlayingCard.h"
 
 @interface PlayingCardGameViewController()
-
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameTypeSwitchProp;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
@@ -67,7 +68,7 @@
 
 - (void)loadDefualtView
 {
-  [self startGame];
+//  [self startGame];
   for (PlayingCardView *cardButton in self.cardViews){
     cardButton.faceUp = NO;
     cardButton.disabled = NO;
@@ -160,7 +161,7 @@
   self.game.numOfCardToMatch= [self setNumberOfCardToMatch];
   self.lastScore = 0;
   [self.chosenCards removeAllObjects];
-  [self localStart];
+  self.gameTypeSwitchProp.enabled = NO;
 }
 
 - (void) actionForCardIndex:(NSUInteger)cardIndex
@@ -211,11 +212,12 @@
   self.cardHistoryLog = nil;
   self.gameStarted = NO;
     self.lastScore = 0;
+  self.gameTypeSwitchProp.enabled = YES;
+
   [self updateText:[NSString stringWithFormat:@"selcet %d cards",
                     [self setNumberOfCardToMatch] ]];
   // local reset
   [self loadDefualtView];
-  [self localReset];
 }
 
 
@@ -254,7 +256,7 @@
     } else if ([cardButton isKindOfClass:[PlayingCardView class]]){
       PlayingCardView *copyForButton = cardButton;
       if(copyForButton.faceUp != card.isChosen){
-        [PlayingCardView transitionWithView:copyForButton duration:2.0 options:UIViewAnimationOptionTransitionFlipFromLeft animations: nil completion: ^(BOOL fin){
+        [PlayingCardView transitionWithView:copyForButton duration:2.0 options:UIViewAnimationOptionTransitionFlipFromBottom animations: nil completion: ^(BOOL fin){
           if (fin){
             copyForButton.userInteractionEnabled = !card.isMatched;
             copyForButton.disabled = card.isMatched;
@@ -346,19 +348,6 @@
   NSAttributedString *nextLine  = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" points:%d\n", scoreChange]];
   [self.cardHistoryLog appendAttributedString:nextLine];
 }
-#pragma mark - check to delete
-- (void)localReset
-{
-  self.gameTypeSwitchProp.enabled = YES;
-}
-
-- (void)localStart
-{
-  self.gameTypeSwitchProp.enabled = NO;
-}
-
-
-
 
 @end
 

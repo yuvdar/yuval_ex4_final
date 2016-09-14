@@ -115,9 +115,6 @@
                                         <exclude reference="sDg-Oh-des"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <action selector="changeGameType:" destination="BYZ-38-t0r" eventType="valueChanged" id="mmS-ef-bYJ"/>
-                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70T-e6-7vl">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -1129,7 +1126,7 @@ Pick a Card!</string>
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="600"/>
                     <connections>
-                        <outlet property="gameTypeSwitchProp" destination="8Wg-8l-GGT" id="6xK-ec-Khs"/>
+                        <outlet property="gameTypeSwitchProp" destination="8Wg-8l-GGT" id="GjK-ve-eYt"/>
                         <outlet property="scoreLabel" destination="cLe-ja-f5l" id="Zl4-9S-6Gz"/>
                         <outlet property="textLabel" destination="70T-e6-7vl" id="QYV-TH-1Qp"/>
                         <outletCollection property="cardViews" destination="x0q-I8-UUw" id="HB4-K6-IZm"/>
