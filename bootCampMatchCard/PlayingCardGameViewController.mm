@@ -6,23 +6,18 @@
 #import "cardHistoryViewController.h"
 #import "PlayingCardView.h"
 #import "PlayingCard.h"
+#import "cardControllerProtocol.h"
 
-@interface PlayingCardGameViewController()
+@interface PlayingCardGameViewController() <cardControllerProtocol>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameTypeSwitchProp;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @property (strong, nonatomic) IBOutletCollection(PlayingCardView) NSArray *cardViews;
 
-@property (strong, nonatomic)  Deck *deck;
-
-@property (strong, nonatomic) CardMatchingGame *game;
-
-@property (nonatomic) int lastScore;
-
-@property (strong, nonatomic) NSMutableArray *chosenCards;
 
 @property (nonatomic) BOOL gameStarted;
 
@@ -30,18 +25,24 @@
 @property (strong, nonatomic) NSMutableAttributedString *cardHistoryLog;
 @property (strong, nonatomic) NSMutableArray *scoreHistoty;
 
+// move to protocol:
+
+
 @end
 
 @implementation PlayingCardGameViewController
+
+@synthesize deck = _deck;
+@synthesize game = _game;
+@synthesize lastScore = _lastScore;
+@synthesize chosenCards = _chosenCards;
 
 #pragma  mark - view
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   [self loadDefualtView];
-  
   for (PlayingCardView *currView in self.cardViews){
-    
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe2Right:)];
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [currView addGestureRecognizer:recognizer];
@@ -87,7 +88,6 @@
 
 - (NSArray *)cardButtons
 {
-  
   return self.cardViews;
 }
 
@@ -130,25 +130,26 @@
 #pragma mark - gestures
 - (void) swipe2Right:(UISwipeGestureRecognizer *)sender
 {
-  [self swipe2:sender  fromDirection:UIViewAnimationOptionTransitionFlipFromLeft];
+  [self actionForSwipe:sender  fromDirection:UIViewAnimationOptionTransitionFlipFromLeft];
 }
 
 - (void) swipe2Left:(UISwipeGestureRecognizer *)sender
 {
-  [self swipe2:sender  fromDirection:UIViewAnimationOptionTransitionFlipFromRight];
+  [self actionForSwipe:sender  fromDirection:UIViewAnimationOptionTransitionFlipFromRight];
 }
 
-- (void)swipe2:(UISwipeGestureRecognizer *)sender fromDirection:(UIViewAnimationOptions)direction
+- (void)actionForSwipe:(UISwipeGestureRecognizer *)sender fromDirection:(UIViewAnimationOptions)direction
 {
   if (!(sender.state == UIGestureRecognizerStateEnded)){
     return;
   }
   NSUInteger cardIndex = [self.cardViews indexOfObject:sender.view];
   PlayingCardView *view = (PlayingCardView *)sender.view;
+  Card *touchedCard = [self.game cardAtIndex:cardIndex];
   [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
   [UIView transitionWithView:view duration:2 options:direction animations: nil
                   completion:^(BOOL fin){if (fin) {
-    [self actionForCardIndex:cardIndex];
+    [self actionForCard:touchedCard];
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
   }
   }];
@@ -164,14 +165,13 @@
   self.gameTypeSwitchProp.enabled = NO;
 }
 
-- (void) actionForCardIndex:(NSUInteger)cardIndex
+- (void) actionForCard:(PlayingCard *)touchedCard
 {
   if (!self.gameStarted){
     [self startGame];
     self.gameStarted = YES;
   }
-  Card *touchedCard = [self.game cardAtIndex:cardIndex];
-  [self.game chooseCardAtIndex:cardIndex];
+  [self.game chooseCard:touchedCard];
   touchedCard.isChosen ? [self.chosenCards addObject:touchedCard] : [self.chosenCards removeObject:touchedCard];
   [self updateUI];
   
@@ -197,26 +197,20 @@
   
 }
 
-- (void)disablePenalty
-{
-  self.game.choosingPenalty = NO;
-}
 
 #pragma mark - UI functions
 - (IBAction)resetButton:(id)sender {
-  // global reset:
-    self.game = nil;
-    [self.chosenCards removeAllObjects];
+  _game = nil;
+  [self.chosenCards removeAllObjects];
   self.cardHistory = nil;
   self.scoreHistoty = nil;
   self.cardHistoryLog = nil;
   self.gameStarted = NO;
-    self.lastScore = 0;
+  self.lastScore = 0;
   self.gameTypeSwitchProp.enabled = YES;
-
+  
   [self updateText:[NSString stringWithFormat:@"selcet %d cards",
                     [self setNumberOfCardToMatch] ]];
-  // local reset
   [self loadDefualtView];
 }
 
@@ -237,48 +231,28 @@
 - (void)updateUI
 {
   for (id cardButton in self.cardButtons){
-    
-    
     NSUInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
     Card *card = [self.game cardAtIndex:cardIndex];
-    if ([cardButton isKindOfClass:[UIButton class]]){
-      UIButton *copyForButton = cardButton;
-      id title = [self titleForCard:card];
-      if ([title isKindOfClass:[NSString class]]){
-        [cardButton setTitle:title forState:UIControlStateNormal];
-      } else if([title isKindOfClass:[NSAttributedString class]]) {
-        [cardButton setAttributedTitle:title forState:UIControlStateNormal];
-      } else {
-        [cardButton setTitle:@"" forState:UIControlStateNormal];
-      }
-      [cardButton setBackgroundImage:[self backgroundImageForCard:card withCardButton:cardButton] forState:UIControlStateNormal];
-      copyForButton.enabled = !card.isMatched;
-    } else if ([cardButton isKindOfClass:[PlayingCardView class]]){
-      PlayingCardView *copyForButton = cardButton;
-      if(copyForButton.faceUp != card.isChosen){
-        [PlayingCardView transitionWithView:copyForButton duration:2.0 options:UIViewAnimationOptionTransitionFlipFromBottom animations: nil completion: ^(BOOL fin){
-          if (fin){
-            copyForButton.userInteractionEnabled = !card.isMatched;
-            copyForButton.disabled = card.isMatched;
-          }
-        }];
-        copyForButton.faceUp = card.isChosen;
-      } else {
-        copyForButton.userInteractionEnabled = !card.isMatched;
-        copyForButton.disabled = card.isMatched;
-      }
-      
-      
+    PlayingCardView *copyForButton = cardButton;
+    if(copyForButton.faceUp != card.isChosen){
+      [PlayingCardView transitionWithView:copyForButton duration:2.0 options:UIViewAnimationOptionTransitionFlipFromBottom animations: nil completion: ^(BOOL fin){
+        if (fin){
+          copyForButton.userInteractionEnabled = !card.isMatched;
+          copyForButton.disabled = card.isMatched;
+        }
+      }];
+      copyForButton.faceUp = card.isChosen;
+    } else {
+      copyForButton.userInteractionEnabled = !card.isMatched;
+      copyForButton.disabled = card.isMatched;
     }
-    
   }
+  
   int scoreChange = (int)self.game.score - self.lastScore;
   self.lastScore = (int)self.game.score;
   
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", (int)self.game.score];
-  
   NSMutableAttributedString *chosenCardsStr = [self stringForChosenCards:self.chosenCards];
-  
   if ([self.chosenCards count] == (int)self.game.numOfCardToMatch){
     if (scoreChange>0){
       NSMutableAttributedString *textMessage = [[NSMutableAttributedString alloc] initWithString:@"GREAT! "];
@@ -317,7 +291,6 @@
     temp = [NSString stringWithFormat:@"%@ %@", temp, cCard.contents];
   }
   NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:temp];
-  
   return str;
 }
 

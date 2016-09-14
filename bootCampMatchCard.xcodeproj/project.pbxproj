@@ -87,6 +87,7 @@
 		F0849EFE1D6DE832008B2B09 /* PlayingCardDeck.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PlayingCardDeck.mm; path = model/PlayingCardDeck.mm; sourceTree = "<group>"; };
 		F0849F001D6EF09F008B2B09 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardMatchingGame.h; path = model/CardMatchingGame.h; sourceTree = SOURCE_ROOT; };
 		F0849F011D6EF09F008B2B09 /* CardMatchingGame.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CardMatchingGame.mm; path = model/CardMatchingGame.mm; sourceTree = SOURCE_ROOT; };
+		F0CF19E91D896D7300BA5ECF /* cardControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardControllerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +173,7 @@
 		F0849EB01D6D944A008B2B09 = {
 			isa = PBXGroup;
 			children = (
+				F0CF19E91D896D7300BA5ECF /* cardControllerProtocol.h */,
 				F004CD9B1D89647E00F639D7 /* views */,
 				F004CD9E1D8964E700F639D7 /* model */,
 				F004CD9D1D8964CE00F639D7 /* Control */,

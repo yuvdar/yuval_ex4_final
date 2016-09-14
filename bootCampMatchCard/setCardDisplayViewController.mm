@@ -7,31 +7,51 @@
 #import "setCardDeck.h"
 #import "CardMatchingGame.h"
 #import "Grid.h"
+#import "cardControllerProtocol.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface setCardDisplayViewController() <UIDynamicAnimatorDelegate>
+@interface setCardDisplayViewController() <UIDynamicAnimatorDelegate, cardControllerProtocol>
 
 
 @property (weak, nonatomic) UILabel *scoreLabel;
+
 @property (strong, nonatomic) IBOutlet UIView *gameView;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *re_arrangeControl;
-@property (strong, nonatomic) NSMutableArray *chosenCards;
-@property (nonatomic) int lastScore;
-@property (strong, nonatomic)  Deck *deck;
-@property (strong, nonatomic) CardMatchingGame *game;
-@property (strong, nonatomic) Grid *grid;
-@property (strong, nonatomic) NSMutableArray *cardAllocation;
-@property (strong, nonatomic) NSMutableArray *viewAllocation;
-@property (nonatomic) NSUInteger nextCardIndex;
-@property (nonatomic) NSUInteger numOfCardsInDisplay;
+
 @property (weak, nonatomic) IBOutlet UIButton *dealCardButton;
+
+@property (strong, nonatomic) Grid *grid;
+
+@property (strong, nonatomic) NSMutableArray *cardAllocation;
+
+@property (strong, nonatomic) NSMutableArray *viewAllocation;
+
+@property (nonatomic) NSUInteger nextCardIndex;
+
+@property (nonatomic) NSUInteger numOfCardsInDisplay;
+
 @property (weak, nonatomic) SetCard *movingCard;
 @property (nonatomic) CGRect originalLocation;
 @property (strong, nonatomic) SetCardVIew *collectionCardsView;
+
+
+// move to protocol:
+
+
+
+
+
+
+
 @end
 
 @implementation setCardDisplayViewController
 
+@synthesize deck = _deck;
+@synthesize game = _game;
+@synthesize lastScore = _lastScore;
+@synthesize chosenCards = _chosenCards;
 
 -(void)viewDidLoad
 {
@@ -182,12 +202,12 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)addSwipeGestureToView:(SetCardVIew *)currView
 {
   UISwipeGestureRecognizer *recognizer;
-  recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+  recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(actionForSwipe:fromDirection:)];
   [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
   [currView addGestureRecognizer:recognizer];
   recognizer.delegate =  (id)self;
   recognizer = nil;
-  recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+  recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(actionForSwipe:fromDirection:)];
   [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
   [currView addGestureRecognizer:recognizer];
   recognizer.delegate =  (id)self;
@@ -208,7 +228,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 
 
-- (void)swipe:(UISwipeGestureRecognizer *)sender
+- (void)actionForSwipe:(UISwipeGestureRecognizer *)sender fromDirection:(UIViewAnimationOptions)direction
 {
   SetCard *card = [self cardFromView:(SetCardVIew *)sender.view];
   [self actionForCard:card];
@@ -224,7 +244,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 
 - (IBAction)newGame:(UIButton *)sender {
-  [self newGame];
+  [self startGame];
 }
 
 
@@ -569,6 +589,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
   int addedCards = 0;
   if (self.nextCardIndex >= [SetCard fullDeckSize]){
     [self noMoreCards:@"DECK IS EMPTY"];
+    self.dealCardButton.enabled = NO;
     return;
   }
   if (self.numOfCardsInDisplay == useGrid.columnCount * useGrid.rowCount){
@@ -660,7 +681,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
   return _game;
 }
 
-- (void)newGame{
+- (void)startGame{
   _game = nil;
   _grid = nil;
   [self.viewAllocation makeObjectsPerformSelector:@selector(removeFromSuperview) ];
