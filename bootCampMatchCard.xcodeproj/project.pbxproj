@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00983771D7FDF6C00C49795 /* setCardDisplayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F00983761D7FDF6C00C49795 /* setCardDisplayViewController.mm */; };
+		F009837A1D7FE35A00C49795 /* SetCardVIew.mm in Sources */ = {isa = PBXBuildFile; fileRef = F00983791D7FE35A00C49795 /* SetCardVIew.mm */; };
+		F009837D1D80601600C49795 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = F009837C1D80601600C49795 /* Grid.m */; };
 		F061DE6F1D733FCA0070A748 /* PlayingCardGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F061DE6E1D733FCA0070A748 /* PlayingCardGameViewController.mm */; };
 		F061DE721D7419F90070A748 /* SetCard.mm in Sources */ = {isa = PBXBuildFile; fileRef = F061DE711D7419F90070A748 /* SetCard.mm */; };
 		F061DE751D7432E80070A748 /* SetCardDeck.mm in Sources */ = {isa = PBXBuildFile; fileRef = F061DE741D7432E80070A748 /* SetCardDeck.mm */; };
-		F061DE781D7463A10070A748 /* SetCardGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F061DE771D7463A10070A748 /* SetCardGameViewController.mm */; };
 		F061DE821D771C710070A748 /* cardHistoryViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F061DE811D771C710070A748 /* cardHistoryViewController.mm */; };
+		F061DEEC1D7C066E0070A748 /* PlayingCardView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F061DEEB1D7C066E0070A748 /* PlayingCardView.mm */; };
 		F0849EBE1D6D944A008B2B09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0849EBD1D6D944A008B2B09 /* main.m */; };
 		F0849EC11D6D944A008B2B09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0849EC01D6D944A008B2B09 /* AppDelegate.m */; };
-		F0849EC41D6D944A008B2B09 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0849EC31D6D944A008B2B09 /* ViewController.m */; };
 		F0849EC71D6D944A008B2B09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0849EC51D6D944A008B2B09 /* Main.storyboard */; };
 		F0849EC91D6D944A008B2B09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0849EC81D6D944A008B2B09 /* Assets.xcassets */; };
 		F0849ECC1D6D944A008B2B09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0849ECA1D6D944A008B2B09 /* LaunchScreen.storyboard */; };
@@ -45,22 +47,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F061DE6D1D733FCA0070A748 /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardGameViewController.h; sourceTree = "<group>"; };
-		F061DE6E1D733FCA0070A748 /* PlayingCardGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayingCardGameViewController.mm; sourceTree = "<group>"; };
+		F00983751D7FDF6C00C49795 /* setCardDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = setCardDisplayViewController.h; path = bootCampMatchCard/setCardDisplayViewController.h; sourceTree = "<group>"; };
+		F00983761D7FDF6C00C49795 /* setCardDisplayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = setCardDisplayViewController.mm; path = bootCampMatchCard/setCardDisplayViewController.mm; sourceTree = "<group>"; };
+		F00983781D7FE35A00C49795 /* SetCardVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardVIew.h; sourceTree = "<group>"; };
+		F00983791D7FE35A00C49795 /* SetCardVIew.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SetCardVIew.mm; sourceTree = "<group>"; };
+		F009837B1D80601600C49795 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Grid.h; path = "../../Downloads/Grid-2/Grid.h"; sourceTree = "<group>"; };
+		F009837C1D80601600C49795 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Grid.m; path = "../../Downloads/Grid-2/Grid.m"; sourceTree = "<group>"; };
+		F061DE6D1D733FCA0070A748 /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCardGameViewController.h; path = bootCampMatchCard/PlayingCardGameViewController.h; sourceTree = "<group>"; };
+		F061DE6E1D733FCA0070A748 /* PlayingCardGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PlayingCardGameViewController.mm; path = bootCampMatchCard/PlayingCardGameViewController.mm; sourceTree = "<group>"; };
 		F061DE701D7419F90070A748 /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCard.h; path = model/SetCard.h; sourceTree = "<group>"; };
 		F061DE711D7419F90070A748 /* SetCard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SetCard.mm; path = model/SetCard.mm; sourceTree = "<group>"; };
 		F061DE731D7432E80070A748 /* SetCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCardDeck.h; path = model/SetCardDeck.h; sourceTree = "<group>"; };
 		F061DE741D7432E80070A748 /* SetCardDeck.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SetCardDeck.mm; path = model/SetCardDeck.mm; sourceTree = "<group>"; };
-		F061DE761D7463A10070A748 /* SetCardGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardGameViewController.h; sourceTree = "<group>"; };
-		F061DE771D7463A10070A748 /* SetCardGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SetCardGameViewController.mm; sourceTree = "<group>"; };
 		F061DE801D771C710070A748 /* cardHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cardHistoryViewController.h; path = bootCampMatchCard/cardHistoryViewController.h; sourceTree = "<group>"; };
 		F061DE811D771C710070A748 /* cardHistoryViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = cardHistoryViewController.mm; path = bootCampMatchCard/cardHistoryViewController.mm; sourceTree = "<group>"; };
+		F061DEEA1D7C066E0070A748 /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		F061DEEB1D7C066E0070A748 /* PlayingCardView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayingCardView.mm; sourceTree = "<group>"; };
 		F0849EB91D6D944A008B2B09 /* bootCampMatchCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bootCampMatchCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0849EBD1D6D944A008B2B09 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0849EBF1D6D944A008B2B09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0849EC01D6D944A008B2B09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F0849EC21D6D944A008B2B09 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F0849EC31D6D944A008B2B09 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F0849EC61D6D944A008B2B09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0849EC81D6D944A008B2B09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0849ECB1D6D944A008B2B09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,9 +114,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F0849EB01D6D944A008B2B09 = {
+		F004CD9B1D89647E00F639D7 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				F00983781D7FE35A00C49795 /* SetCardVIew.h */,
+				F00983791D7FE35A00C49795 /* SetCardVIew.mm */,
+				F061DEEA1D7C066E0070A748 /* PlayingCardView.h */,
+				F061DEEB1D7C066E0070A748 /* PlayingCardView.mm */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		F004CD9D1D8964CE00F639D7 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				F061DE6D1D733FCA0070A748 /* PlayingCardGameViewController.h */,
+				F061DE6E1D733FCA0070A748 /* PlayingCardGameViewController.mm */,
+				F00983751D7FDF6C00C49795 /* setCardDisplayViewController.h */,
+				F00983761D7FDF6C00C49795 /* setCardDisplayViewController.mm */,
+				F061DE801D771C710070A748 /* cardHistoryViewController.h */,
+				F061DE811D771C710070A748 /* cardHistoryViewController.mm */,
+				F009837F1D8060FC00C49795 /* Grid */,
+			);
+			name = Control;
+			sourceTree = "<group>";
+		};
+		F004CD9E1D8964E700F639D7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F0849EF51D6DD1D1008B2B09 /* Card.mm */,
 				F0849EF41D6DD1D1008B2B09 /* Card.h */,
 				F0849EF71D6DDD5F008B2B09 /* Deck.h */,
 				F0849EFA1D6DE201008B2B09 /* PlayingCard.h */,
@@ -124,9 +156,25 @@
 				F0849EFE1D6DE832008B2B09 /* PlayingCardDeck.mm */,
 				F0849EFB1D6DE201008B2B09 /* PlayingCard.mm */,
 				F0849EF81D6DDD5F008B2B09 /* Deck.mm */,
-				F061DE801D771C710070A748 /* cardHistoryViewController.h */,
-				F061DE811D771C710070A748 /* cardHistoryViewController.mm */,
-				F0849EF51D6DD1D1008B2B09 /* Card.mm */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		F009837F1D8060FC00C49795 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				F009837B1D80601600C49795 /* Grid.h */,
+				F009837C1D80601600C49795 /* Grid.m */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
+		F0849EB01D6D944A008B2B09 = {
+			isa = PBXGroup;
+			children = (
+				F004CD9B1D89647E00F639D7 /* views */,
+				F004CD9E1D8964E700F639D7 /* model */,
+				F004CD9D1D8964CE00F639D7 /* Control */,
 				F0849EBB1D6D944A008B2B09 /* bootCampMatchCard */,
 				F0849ED51D6D944A008B2B09 /* bootCampMatchCardTests */,
 				F0849EE01D6D944A008B2B09 /* bootCampMatchCardUITests */,
@@ -147,12 +195,6 @@
 		F0849EBB1D6D944A008B2B09 /* bootCampMatchCard */ = {
 			isa = PBXGroup;
 			children = (
-				F0849EC21D6D944A008B2B09 /* ViewController.h */,
-				F0849EC31D6D944A008B2B09 /* ViewController.m */,
-				F061DE6D1D733FCA0070A748 /* PlayingCardGameViewController.h */,
-				F061DE6E1D733FCA0070A748 /* PlayingCardGameViewController.mm */,
-				F061DE761D7463A10070A748 /* SetCardGameViewController.h */,
-				F061DE771D7463A10070A748 /* SetCardGameViewController.mm */,
 				F0849EC51D6D944A008B2B09 /* Main.storyboard */,
 				F0849EC81D6D944A008B2B09 /* Assets.xcassets */,
 				F0849ECA1D6D944A008B2B09 /* LaunchScreen.storyboard */,
@@ -320,14 +362,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00983771D7FDF6C00C49795 /* setCardDisplayViewController.mm in Sources */,
 				F0849EFF1D6DE832008B2B09 /* PlayingCardDeck.mm in Sources */,
 				F0849EFC1D6DE201008B2B09 /* PlayingCard.mm in Sources */,
 				F061DE721D7419F90070A748 /* SetCard.mm in Sources */,
-				F061DE781D7463A10070A748 /* SetCardGameViewController.mm in Sources */,
 				F061DE751D7432E80070A748 /* SetCardDeck.mm in Sources */,
+				F009837D1D80601600C49795 /* Grid.m in Sources */,
+				F061DEEC1D7C066E0070A748 /* PlayingCardView.mm in Sources */,
+				F009837A1D7FE35A00C49795 /* SetCardVIew.mm in Sources */,
 				F0849EF91D6DDD5F008B2B09 /* Deck.mm in Sources */,
 				F061DE6F1D733FCA0070A748 /* PlayingCardGameViewController.mm in Sources */,
-				F0849EC41D6D944A008B2B09 /* ViewController.m in Sources */,
 				F061DE821D771C710070A748 /* cardHistoryViewController.mm in Sources */,
 				F0849EF61D6DD1D1008B2B09 /* Card.mm in Sources */,
 				F0849F021D6EF09F008B2B09 /* CardMatchingGame.mm in Sources */,
@@ -474,9 +518,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bootCampMatchCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Lightricks.bootCampMatchCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -485,9 +531,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bootCampMatchCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Lightricks.bootCampMatchCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -519,6 +567,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = bootCampMatchCardUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Lightricks.bootCampMatchCardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = bootCampMatchCardUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Lightricks.bootCampMatchCardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

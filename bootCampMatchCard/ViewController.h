@@ -8,29 +8,36 @@
 
 #import <UIKit/UIKit.h>
 #import "Deck.h"
+#import "Card.h"
 #import "CardMatchingGame.h"
 
 @interface ViewController : UIViewController
 
 @property (strong, nonatomic)  NSArray *cardButton;
 @property (nonatomic) BOOL gameStarted;
-@property (nonatomic) BOOL keepButtonEnanled;
+
+
 @property (strong, nonatomic) NSMutableArray *cardHistory;
 @property (strong, nonatomic) NSMutableAttributedString *cardHistoryLog;
 @property (strong, nonatomic) NSMutableArray *scoreHistoty;
-
+//@property (strong, nonatomic) CardMatchingGame *game;
 
 - (Deck *) createDeck; // abstract 
--(int)setNumberOfCardToMatch; //abstract
--(void)localReset; //abstract
--(void)localStart; //abstract
--(id)titleForCard:(Card *)card; //abstract
--(UIImage *)backgroundImageForCard:(Card *)card withCardButton:(UIButton *)cardButton; // abstract
--(void)loadDefualtView; // abstract
--(NSMutableAttributedString *)stringForChosenCards:(NSArray *)chosenCards;
--(NSAttributedString *)checkIfLegal:(Card *)card whenChosenCardsAre:chosenCards;
--(void)startGame;
+- (int)setNumberOfCardToMatch; //abstract
+- (id)titleForCard:(Card *)card; //abstract
+- (UIImage *)backgroundImageForCard:(Card *)card withCardButton:(UIButton *)cardButton; // abstract
+- (void)loadDefualtView; // abstract
+- (NSMutableAttributedString *)stringForChosenCards:(NSArray *)chosenCards;
+- (NSAttributedString *)checkIfLegal:(Card *)card whenChosenCardsAre:chosenCards;
+- (void) actionForCardIndex:(NSUInteger)cardIndex;
+- (void)startGame;
 - (void)updateUI;
--(void)disablePenalty;
+
+
+
+// to delete:
+- (void)localReset; //abstract
+- (void)localStart; //abstract
+- (void)disablePenalty;
 
 @end

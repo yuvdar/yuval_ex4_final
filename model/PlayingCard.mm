@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray *)validSuits
 {
-  return @[@"♠︎",@"♣︎",@"♥︎",@"♦︎"];
+  return @[@"♠",@"♣",@"♥",@"♦"];
 }
 + (NSArray *) rankStrings
 {

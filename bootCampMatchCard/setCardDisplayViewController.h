@@ -1,9 +1,12 @@
 // Copyright (c) 2016 Lightricks. All rights reserved.
 // Created by Yuval Dar.
-# import "ViewController.h"
+
+#import  <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SetCardGameViewController : ViewController
+@interface setCardDisplayViewController : UIViewController
+
+
 
 @end
 

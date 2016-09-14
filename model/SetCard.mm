@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray *)validSuits
 {
-  return @[@"■",@"●",@"▲"];
+  return @[@"oval",@"squiggle",@"diamond"];
 }
 + (NSArray *)validRanks
 {
@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 +(NSArray *)validColors
 {
-  return @[@"redColor", @"blackColor", @"blueColor"];
+  return @[@"red", @"green", @"purple"];
 }
 
 
@@ -83,7 +83,17 @@ NS_ASSUME_NONNULL_BEGIN
   return [[self validRanks] count];
 }
 
++ (NSUInteger) fullDeckSize
+{
+ return  [self maxRank] * [[self validSuits] count] * [[self validfill] count] * [[self validColors] count];
+  
+}
 
+- (NSString *)description
+{
+  return [NSString stringWithFormat:@"rank-%d, suit-%@, color-%@ shading-%@",(int)self.rank, self.suit, self.color,
+          self.shading];
+}
 @end
 
 NS_ASSUME_NONNULL_END

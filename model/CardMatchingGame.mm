@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) NSMutableArray *cards; // of Card
+@property (nonatomic, readwrite) NSInteger chosenNum;
 
 @end
 
@@ -24,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
   
   if (self  = [super init]) {
+    self.chosenNum = 0;
     for (int i=0; i<count; i++){
       Card *card = [deck drawRandomCard];
       if (card){
@@ -43,6 +45,12 @@ static const int MISMATCH_PENALTY = 2;
 static const int  MATCH_BONUS = 2;
 static const int  COST_TO_CHOOSE = 1;
 
+-(void)chooseCard:(Card *)card;
+{
+  NSUInteger index = [self.cards indexOfObject:card];
+  [self chooseCardAtIndex:index];
+}
+
 -(void)chooseCardAtIndex:(NSUInteger)index
 {
   Card *card = [self cardAtIndex:index];
@@ -51,6 +59,7 @@ static const int  COST_TO_CHOOSE = 1;
   }
   if (card.isChosen){
     card.chosen = NO;
+    self.chosenNum --;
     return;
   }
   NSMutableArray *matchedCards = [[NSMutableArray alloc] init];
@@ -67,6 +76,7 @@ static const int  COST_TO_CHOOSE = 1;
     }
   }
   card.chosen = YES;
+  self.chosenNum ++;
   if ([matchedCards count] == self.numOfCardToMatch-1){
     int matchScore = [card match:matchedCards];
     if (matchScore > 0){
@@ -82,6 +92,7 @@ static const int  COST_TO_CHOOSE = 1;
       self.score -= MISMATCH_PENALTY;
       for (Card *otherCard in matchedCards){
         otherCard.chosen = NO;
+        self.chosenNum --;
       }
       
       

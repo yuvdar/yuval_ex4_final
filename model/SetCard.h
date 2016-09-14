@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSUInteger) maxRank;
 + (NSArray *)validColors;
 + (NSArray *)validfill;
++ (NSUInteger)fullDeckSize;
 
 
 @end
