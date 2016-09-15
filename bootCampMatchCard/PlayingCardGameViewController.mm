@@ -69,7 +69,6 @@
 
 - (void)loadDefualtView
 {
-//  [self startGame];
   for (PlayingCardView *cardButton in self.cardViews){
     cardButton.faceUp = NO;
     cardButton.disabled = NO;
@@ -143,6 +142,10 @@
   if (!(sender.state == UIGestureRecognizerStateEnded)){
     return;
   }
+  if (!self.gameStarted){
+    [self startGame];
+    self.gameStarted = YES;
+  }
   NSUInteger cardIndex = [self.cardViews indexOfObject:sender.view];
   PlayingCardView *view = (PlayingCardView *)sender.view;
   Card *touchedCard = [self.game cardAtIndex:cardIndex];
@@ -169,10 +172,7 @@
 
 - (void) actionForCard:(PlayingCard *)touchedCard
 {
-  if (!self.gameStarted){
-    [self startGame];
-    self.gameStarted = YES;
-  }
+  
   [self.game chooseCard:touchedCard];
   touchedCard.isChosen ? [self.chosenCards addObject:touchedCard] : [self.chosenCards removeObject:touchedCard];
   [self updateUI];
