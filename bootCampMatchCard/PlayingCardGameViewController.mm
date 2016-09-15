@@ -159,10 +159,12 @@
 #pragma mark - game functions
 - (void)startGame
 {
+  self.gameTypeSwitchProp.enabled = NO;
+  self.gameTypeSwitchProp.hidden = YES;
   self.game.numOfCardToMatch= [self setNumberOfCardToMatch];
   self.lastScore = 0;
   [self.chosenCards removeAllObjects];
-  self.gameTypeSwitchProp.enabled = NO;
+
 }
 
 - (void) actionForCard:(PlayingCard *)touchedCard
@@ -208,6 +210,7 @@
   self.gameStarted = NO;
   self.lastScore = 0;
   self.gameTypeSwitchProp.enabled = YES;
+  self.gameTypeSwitchProp.hidden = NO;
   
   [self updateText:[NSString stringWithFormat:@"selcet %d cards",
                     [self setNumberOfCardToMatch] ]];

@@ -129,6 +129,7 @@
 		F004CD9D1D8964CE00F639D7 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				F0CF19E91D896D7300BA5ECF /* cardControllerProtocol.h */,
 				F061DE6D1D733FCA0070A748 /* PlayingCardGameViewController.h */,
 				F061DE6E1D733FCA0070A748 /* PlayingCardGameViewController.mm */,
 				F00983751D7FDF6C00C49795 /* setCardDisplayViewController.h */,
@@ -173,7 +174,6 @@
 		F0849EB01D6D944A008B2B09 = {
 			isa = PBXGroup;
 			children = (
-				F0CF19E91D896D7300BA5ECF /* cardControllerProtocol.h */,
 				F004CD9B1D89647E00F639D7 /* views */,
 				F004CD9E1D8964E700F639D7 /* model */,
 				F004CD9D1D8964CE00F639D7 /* Control */,
